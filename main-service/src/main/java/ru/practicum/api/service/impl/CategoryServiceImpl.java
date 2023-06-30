@@ -47,10 +47,10 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     @Transactional
-    public CategoryDto updateCategory(CategoryDto сategoryDto, Long catId) {
+    public CategoryDto updateCategory(CategoryDto categoryDto, Long catId) {
         Category category = categoryRepository.findById(catId)
                 .orElseThrow(() -> new NotFoundException("Категория не найдена"));
-        category.setName(сategoryDto.getName());
+        category.setName(categoryDto.getName());
         return CategoryMapper.inCategoryDto(categoryRepository.save(category));
     }
 
