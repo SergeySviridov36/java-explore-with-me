@@ -1,6 +1,6 @@
 package ru.practicum.model.dto.users;
 
-import lombok.*;;
+import lombok.*;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
