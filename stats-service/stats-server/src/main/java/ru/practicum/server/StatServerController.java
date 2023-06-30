@@ -31,7 +31,7 @@ public class StatServerController {
                                          LocalDateTime start,
                                          @RequestParam(value = "end") @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
                                          LocalDateTime end,
-                                         @RequestParam(value = "uris", required = false, defaultValue = "")
+                                         @RequestParam(value = "uris", defaultValue = "")
                                          List<String> uris,
                                          @RequestParam(value = "unique", required = false, defaultValue = "false")
                                          Boolean unique) {
