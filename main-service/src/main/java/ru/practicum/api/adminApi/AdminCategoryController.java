@@ -28,10 +28,10 @@ public class AdminCategoryController {
     }
 
     @PatchMapping("/{catId}")
-    public CategoryDto updateCategory(@Valid @RequestBody CategoryDto CategoryDto,
+    public CategoryDto updateCategory(@Valid @RequestBody CategoryDto categoryDto,
                                       @PathVariable Long catId) {
         log.debug("Получен запрос PATH /admin/categories/{catId}: {}", catId);
-        return categoryService.updateCategory(CategoryDto, catId);
+        return categoryService.updateCategory(categoryDto, catId);
     }
 
     @DeleteMapping("/{catId}")
