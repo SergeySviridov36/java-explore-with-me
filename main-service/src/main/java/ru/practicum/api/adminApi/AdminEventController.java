@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import ru.practicum.api.service.EventService;
 import ru.practicum.model.dto.event.EventFullDto;
 import ru.practicum.model.dto.event.UpdateEventAdminRequest;
-import ru.practicum.util.CurrentState;
+import ru.practicum.constants.CurrentState;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Positive;

@@ -21,8 +21,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static ru.practicum.util.CurrentState.PUBLISHED;
-import static ru.practicum.util.StatusRequest.*;
+import static ru.practicum.constants.CurrentState.PUBLISHED;
+import static ru.practicum.constants.StatusRequest.*;
 
 @Service
 @Transactional(readOnly = true)

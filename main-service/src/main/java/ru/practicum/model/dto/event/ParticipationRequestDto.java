@@ -2,7 +2,7 @@ package ru.practicum.model.dto.event;
 
 import lombok.*;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import ru.practicum.util.StatusRequest;
+import ru.practicum.constants.StatusRequest;
 
 import java.time.LocalDateTime;
 

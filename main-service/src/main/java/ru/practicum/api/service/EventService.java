@@ -2,7 +2,7 @@ package ru.practicum.api.service;
 
 import org.springframework.data.domain.PageRequest;
 import ru.practicum.model.dto.event.*;
-import ru.practicum.util.CurrentState;
+import ru.practicum.constants.CurrentState;
 
 import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDateTime;

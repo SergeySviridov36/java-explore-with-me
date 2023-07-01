@@ -18,8 +18,8 @@ import ru.practicum.model.Event;
 import ru.practicum.model.QEvent;
 import ru.practicum.model.User;
 import ru.practicum.model.dto.event.*;
-import ru.practicum.util.CurrentState;
-import ru.practicum.util.StateAction;
+import ru.practicum.constants.CurrentState;
+import ru.practicum.constants.StateAction;
 
 import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDateTime;
@@ -30,7 +30,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import static ru.practicum.mapper.EventMapper.*;
-import static ru.practicum.util.CurrentState.*;
+import static ru.practicum.constants.CurrentState.*;
 
 @Service
 @Transactional(readOnly = true)
@@ -129,6 +129,12 @@ public class EventServiceImpl implements EventService {
             throw new IllegalArgumentException("Статус не PENDING или CANCELED. Время на которые" +
                     " намечено событие не может быть раньше,чем через два часа от текущего момента");
         Event update = inEventUpdate(event, eventUserRequest);
+        if (eventUserRequest.getStateAction() != null) {
+            if (eventUserRequest.getStateAction().equals(StateAction.CANCEL_REVIEW))
+                update.setState(CANCELED);
+            if (eventUserRequest.getStateAction().equals(StateAction.SEND_TO_REVIEW))
+                update.setState(PENDING);
+        }
         if (eventUserRequest.getCategory() != null) {
             Category category = categoryRepository.findById(eventUserRequest.getCategory())
                     .orElseThrow(() -> new NotFoundException("Категория не найдена."));

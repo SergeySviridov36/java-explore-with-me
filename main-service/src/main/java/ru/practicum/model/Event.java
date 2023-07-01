@@ -1,7 +1,7 @@
 package ru.practicum.model;
 
 import lombok.*;
-import ru.practicum.util.CurrentState;
+import ru.practicum.constants.CurrentState;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;

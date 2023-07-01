@@ -1,7 +1,7 @@
 package ru.practicum.model.dto.event;
 
 import lombok.*;
-import ru.practicum.util.StatusRequest;
+import ru.practicum.constants.StatusRequest;
 
 import java.util.List;
 

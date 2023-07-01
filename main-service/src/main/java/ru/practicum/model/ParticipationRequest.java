@@ -1,7 +1,7 @@
 package ru.practicum.model;
 
 import lombok.*;
-import ru.practicum.util.StatusRequest;
+import ru.practicum.constants.StatusRequest;
 
 import javax.persistence.*;
 

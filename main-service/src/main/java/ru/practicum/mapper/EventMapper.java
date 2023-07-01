@@ -5,12 +5,10 @@ import ru.practicum.model.Event;
 import ru.practicum.model.Location;
 import ru.practicum.model.User;
 import ru.practicum.model.dto.event.*;
-import ru.practicum.util.State;
 
 import java.time.LocalDateTime;
 
-import static ru.practicum.util.CurrentState.CANCELED;
-import static ru.practicum.util.CurrentState.PENDING;
+import static ru.practicum.constants.CurrentState.PENDING;
 
 public class EventMapper {
 
@@ -89,31 +87,10 @@ public class EventMapper {
         return event;
     }
 
-    public static Event inEventUpdate(Event event, UpdateEventUserRequest updateEventUserRequest) {
-        if (updateEventUserRequest.getEventDate() != null)
-            event.setEventDate(updateEventUserRequest.getEventDate());
-        if (updateEventUserRequest.getAnnotation() != null)
-            event.setAnnotation(updateEventUserRequest.getAnnotation());
-        if (updateEventUserRequest.getDescription() != null)
-            event.setDescription(updateEventUserRequest.getDescription());
-        if (updateEventUserRequest.getPaid() != null)
-            event.setPaid(updateEventUserRequest.getPaid());
-        if (updateEventUserRequest.getParticipantLimit() != null)
-            event.setParticipantLimit(updateEventUserRequest.getParticipantLimit());
-        if (updateEventUserRequest.getEventDate() != null)
-            event.setCreatedOn(updateEventUserRequest.getEventDate());
-        if (updateEventUserRequest.getTitle() != null)
-            event.setTitle(updateEventUserRequest.getTitle());
-        if (updateEventUserRequest.getStateAction() != null) {
-            if (updateEventUserRequest.getStateAction().equals(State.CANCEL_REVIEW))
-                event.setState(CANCELED);
-            if (updateEventUserRequest.getStateAction().equals(State.SEND_TO_REVIEW))
-                event.setState(PENDING);
-        }
-        if (updateEventUserRequest.getLocation() != null) {
-            event.setLat(updateEventUserRequest.getLocation().getLat());
-            event.setLon(updateEventUserRequest.getLocation().getLon());
-        }
-        return event;
+    public static Event inEventUpdate(Event event, UpdateEventUserRequest u) {
+        UpdateEventAdminRequest updateEventAdminRequest = new UpdateEventAdminRequest(u.getAnnotation(), u.getCategory(),
+                u.getDescription(), u.getEventDate(), u.getLocation(), u.getPaid(), u.getParticipantLimit(),
+                u.getRequestModeration(), u.getStateAction(), u.getTitle());
+        return inEventAdminUpdate(event, updateEventAdminRequest);
     }
 }

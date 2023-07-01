@@ -2,8 +2,8 @@ package ru.practicum.model.dto.event;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
+import ru.practicum.constants.StateAction;
 import ru.practicum.model.Location;
-import ru.practicum.util.State;
 
 import javax.validation.constraints.Future;
 import javax.validation.constraints.Size;
@@ -37,7 +37,7 @@ public class UpdateEventUserRequest {
 
     private Boolean requestModeration;
 
-    private State stateAction;
+    private StateAction stateAction;
 
     @Size(min = 3, max = 120)
     private String title;

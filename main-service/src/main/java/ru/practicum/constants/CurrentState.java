@@ -1,4 +1,4 @@
-package ru.practicum.util;
+package ru.practicum.constants;
 
 public enum CurrentState {
     PENDING,
