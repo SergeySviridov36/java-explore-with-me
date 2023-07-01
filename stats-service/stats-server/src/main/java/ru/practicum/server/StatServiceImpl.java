@@ -6,7 +6,6 @@ import org.springframework.transaction.annotation.Transactional;
 import ru.practicum.dto.InputStatDto;
 import ru.practicum.dto.OutputStatDto;
 
-
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -26,6 +25,8 @@ public class StatServiceImpl implements StatService {
 
     @Override
     public List<OutputStatDto> findStats(LocalDateTime start, LocalDateTime end, List<String> uris, Boolean unique) {
+        if (start == null || end == null || start.isAfter(end))
+            throw new DateValidationException("Дата старта должна быть раньше даты окончания");
         if (uris.isEmpty()) {
             if (unique) {
                 return statRepository.findByTimeIntervalUniqueIp(
