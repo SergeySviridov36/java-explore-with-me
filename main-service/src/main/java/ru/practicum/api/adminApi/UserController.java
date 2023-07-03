@@ -18,11 +18,12 @@ import java.util.List;
 @RequiredArgsConstructor
 @Slf4j
 @Validated
+@RequestMapping("/admin/users")
 public class UserController {
 
     private final UserService userService;
 
-    @GetMapping("/admin/users")
+    @GetMapping()
     public List<UsersDto> findAllUsers(@RequestParam(required = false) List<Long> ids,
                                        @PositiveOrZero @RequestParam(defaultValue = "0", required = false) Integer from,
                                        @Positive @RequestParam(defaultValue = "10", required = false) Integer size) {
@@ -31,14 +32,14 @@ public class UserController {
     }
 
     @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping("/admin/users")
+    @PostMapping()
     public UsersDto addUser(@Valid @RequestBody NewUserRequest userRequest) {
         log.debug("Получен запрос POST /admin/users");
         return userService.addUser(userRequest);
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @DeleteMapping("/admin/users/{userId}")
+    @DeleteMapping("/{userId}")
     public void deleteUser(@PathVariable("userId") long userId) {
         log.debug("Получен запрос DELETE /admin/users/{userId}");
         userService.deleteUser(userId);

@@ -4,7 +4,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 import ru.practicum.model.Event;
-import ru.practicum.util.CurrentState;
+import ru.practicum.constants.CurrentState;
 
 import java.util.List;
 import java.util.Optional;
